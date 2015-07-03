@@ -18,9 +18,9 @@ Finally, simply follow the standard procedure for [installing Prosody modules](h
 Configuration
 -------------
 
-You will need to change the value of the `authentication` variable in prosody.cfg.lua to `pam`.  No further configuration is required, but depending on your set-up, the following options may need to be specified:
+You will need to change the value of the `authentication` option in _prosody.cfg.lua_ to `"pam"`.  No further configuration is required, but depending on your set-up, the following options may need to be specified:
 
 Option             | Default         | Description
 ------------------ | --------------- | -----------
 `auth_pam_service` | `"system-auth"` | The PAM service to use, as usually configured in `/etc/pam.d/`
-`auth_append_host` | `false`         | Whether to append the hostname to the client-supplied username to form a JID
+`auth_append_host` | `false`         | Whether to authenticate the JID (e.g. _user@example.com_) rather than the localpart (_user_), by appending the hostname to the input supplied by the client

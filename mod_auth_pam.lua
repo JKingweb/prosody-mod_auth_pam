@@ -62,10 +62,12 @@ function provider.pam_authenticate(service, username, password)
 	end
 	local success, err = handle:authenticate()
 	if not success then
+		log("debug" "Error from PAM service: "..err)
 		return nil, err
 	end
 	local success, err = handle:endx(pam.SUCCESS)
 	if not success then
+		log("debug" "Error from PAM service: "..err)
 		return nil, err
 	end
 	return true
@@ -79,6 +81,7 @@ function provider.test_password(username, password)
 	if append then
 		testname = username.."@"..host;
 	end
+	log("debug", "Authenticating user '"..testname.."' using PAM service '"..service.."'");
 	return provider.pam_authenticate(service, testname, password);
 end
 
